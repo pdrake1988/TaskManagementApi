@@ -1,0 +1,17 @@
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Core.dll
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\bin\Debug\net7.0\Core.pdb
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+C:\Users\Paul\RiderProjects\TaskManagementApi\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
