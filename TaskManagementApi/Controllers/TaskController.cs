@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Claims;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagementApi.Models;
 using Task = Core.Entities.Task;
@@ -18,22 +15,30 @@ namespace TaskManagementApi.Controllers
     public class TaskController : ControllerBase
     {
         private readonly ITaskRepository _taskRepository;
-
-        public TaskController(ITaskRepository taskRepository)
+        private readonly UserManager<Account> _userManager;
+        public TaskController(ITaskRepository taskRepository, UserManager<Account> userManager)
         {
             _taskRepository = taskRepository;
+            _userManager = userManager;
         }
+
         [HttpGet("GetAll")]
-        public IActionResult GetAllTasks()
+        public async Task<IActionResult> GetAllTasks()
         {
-            return Ok(_taskRepository.GetAll());
+            Account user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
+            if (user != null)
+            {
+                List<Task> tasks = await _taskRepository.GetAll();
+                return Ok(tasks.Where(t => t.UserId == user.Id));
+            }
+            return NotFound();
         }
 
         [HttpGet("GetById/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Task? task = _taskRepository.GetById(id);
-            if (task is not null)
+            Task? task = await _taskRepository.GetById(id);
+            if (task != null)
             {
                 return Ok(task);
             }
@@ -41,11 +46,12 @@ namespace TaskManagementApi.Controllers
         }
         
         [HttpPost("AddTask")]
-        public IActionResult AddTask([FromBody] TaskModel taskModel)
+        public async Task<IActionResult> AddTask([FromBody] TaskModel taskModel)
         {
-            if (ModelState.IsValid)
+            Account? user = await _userManager.GetUserAsync(HttpContext.User);
+            if (ModelState.IsValid && user != null)
             {
-                Task task = new Task(taskModel.Name, taskModel.Description, taskModel.CategoryId, taskModel.DueDate, taskModel.UserId);
+                Task task = new Task(taskModel.Name, taskModel.Description, taskModel.CategoryId, taskModel.DueDate, user.Id);
                 _taskRepository.Add(task);
                 return Ok();
             }

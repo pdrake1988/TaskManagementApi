@@ -179,15 +179,14 @@ namespace Infrastructure.Migrations
                     Description = table.Column<string>(type: "Text", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateTime>(type: "Date", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_AspNetUsers_AccountId",
-                        column: x => x.AccountId,
+                        name: "FK_Tasks_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -239,14 +238,14 @@ namespace Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_AccountId",
-                table: "Tasks",
-                column: "AccountId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tasks_CategoryId",
                 table: "Tasks",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tasks_UserId",
+                table: "Tasks",
+                column: "UserId");
         }
 
         /// <inheritdoc />

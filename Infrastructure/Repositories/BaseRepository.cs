@@ -1,5 +1,6 @@
 ﻿using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Infrastructure.Repositories;
 
@@ -7,23 +8,19 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     private readonly ApplicationDbContext _applicationDbContext;
 
-
-    protected BaseRepository()
-    {
-    }
     protected BaseRepository(ApplicationDbContext applicationDbContext)
     {
         _applicationDbContext = applicationDbContext;
     }
 
-    public IEnumerable<T> GetAll()
+    public async Task<List<T>> GetAll()
     {
-        return _applicationDbContext.Set<T>().ToList();
+        return await _applicationDbContext.Set<T>().ToListAsync();
     }
 
-    public T? GetById(int id)
+    public async Task<T?> GetById(int id)
     {
-        return _applicationDbContext.Set<T>().Find(id);
+        return await _applicationDbContext.Set<T>().FindAsync(id);
     }
 
     public int Add(T entity)

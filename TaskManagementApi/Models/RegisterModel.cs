@@ -2,14 +2,16 @@
 
 namespace TaskManagementApi.Models;
 
-public class AccountModel
+public class RegisterModel
 {
-    public AccountModel(string userName, string password)
+    public RegisterModel(string userName, string emailAddress, string password)
     {
         UserName = userName;
+        EmailAddress = emailAddress;
         Password = password;
     }
 
+    [Required(ErrorMessage = "Username is Required")]
     public string UserName { get; set; }
     [Required(ErrorMessage = "Email is Required")]
     [EmailAddress(ErrorMessage = "Invalid Email Address")]

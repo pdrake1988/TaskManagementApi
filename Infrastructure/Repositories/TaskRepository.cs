@@ -5,5 +5,7 @@ namespace Infrastructure.Repositories;
 
 public class TaskRepository : BaseRepository<Task>, ITaskRepository
 {
-    
+    public TaskRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
+    {
+    }
 }

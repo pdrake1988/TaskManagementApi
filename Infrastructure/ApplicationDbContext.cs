@@ -10,7 +10,6 @@ public class ApplicationDbContext : IdentityDbContext<Account>
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
     }
-    public DbSet<Account> Accounts { get; set; }
     public DbSet<Task> Tasks { get; set; }
     public DbSet<Category> Categories { get; set; }
 }

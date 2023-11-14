@@ -4,8 +4,8 @@ namespace Core.Interfaces;
 
 public interface IBaseRepository<T> where T : class
 {
-    IEnumerable<T> GetAll();
-    T? GetById(int id);
+    Task<List<T>> GetAll();
+    Task<T?> GetById(int id);
     int Add(T entity);
     int Update(T entity);
     int? Delete(int id);

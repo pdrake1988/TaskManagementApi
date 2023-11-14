@@ -5,7 +5,7 @@ namespace Core.Entities;
 
 public class Task
 {
-    public Task(string name, string description, int categoryId, DateTime dueDate, int userId)
+    public Task(string name, string description, int categoryId, DateTime dueDate, string userId)
     {
         Name = name;
         Description = description;
@@ -28,6 +28,7 @@ public class Task
     [Column(TypeName = "Date")]
     public DateTime DueDate { get; set; }
     [Required]
-    public int UserId { get; set; }
-    public Account Account { get; set; }
+    [ForeignKey("Account")]
+    public string UserId { get; set; }
+    public virtual Account Account { get; set; }
 }

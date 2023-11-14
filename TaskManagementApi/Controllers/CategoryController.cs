@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagementApi.Models;
 
 namespace TaskManagementApi.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
@@ -22,15 +24,15 @@ namespace TaskManagementApi.Controllers
         }
 
         [HttpGet("GetAll")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_categoryRepository.GetAll());
+            return Ok( await _categoryRepository.GetAll());
         }
 
         [HttpGet("GetById/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Category? category = _categoryRepository.GetById(id);
+            Category? category = await _categoryRepository.GetById(id);
             if (category is not null)
             {
                 return Ok(category);
